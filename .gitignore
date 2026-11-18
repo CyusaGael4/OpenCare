@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# Environment / secrets — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Build output
+dist/
+build/
+frontend/dist/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data / uploads
+backend/uploads/
+backend/tmp/
+coverage/
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Freebuff workspace marker
+.freebuff/project-id
+.freebuff/.gitignore

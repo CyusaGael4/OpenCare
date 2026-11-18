@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * CSS variables mirror the Tailwind tokens in tailwind.config.js so that raw CSS
+ * (focus rings, selection, gradients) can use the same brand values. If a token
+ * changes, change it in both places — the Tailwind config stays canonical.
+ */
+:root {
+  --color-primary: #194c54;
+  --color-primary-dark: #123c43;
+  --color-accent: #f3d66a;
+  --color-accent-soft: #fcf6de;
+  --color-background: #f5f6f4;
+  --color-surface: #ffffff;
+  --color-text: #18373b;
+  --color-muted: #748286;
+  --color-border: #e7ebe8;
+  --color-soft-teal: #eaf3f1;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    min-height: 100%;
+  }
+
+  body {
+    @apply bg-canvas font-sans text-ink antialiased;
+    font-feature-settings: 'ss01' on;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  img,
+  svg,
+  video {
+    max-width: 100%;
+    display: block;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-ink;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible keyboard focus everywhere; never removed, only styled. */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-text);
+  }
+}
+
+@layer components {
+  /* Shared page frame: consistent max width and gutters across every page. */
+  .page-shell {
+    @apply mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Respect the user's motion preference across the whole application. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
